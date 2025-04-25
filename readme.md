@@ -9,7 +9,7 @@ compra para tu API.
 
 ### Desarrollo del Servidor
 
-El servidor debe estar basado en Node.js y Express, y debe escuchar en el puerto **8080**. Se deben disponer dos
+El servidor debe estar basado en Node.js y Express, y debe escuchar en el puerto **8087**. Se deben disponer dos
 grupos de rutas: `/api/products` y `/api/carts`. Estos endpoints estarán implementados con el router de Express, con
 las siguientes especificaciones:
 
