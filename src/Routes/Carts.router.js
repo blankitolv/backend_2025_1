@@ -13,8 +13,6 @@ const cm = require("../Models/Carts.models.js");
 router.post("/", async (req, res) => {
   const [ ...products ] = req.body;
   
-  // controlador validaciones simples
-  // si products es undefined o es un array vacio, bad request
   if (!products || products.length == 0) return res.status(400).send();
 
   // se normalizan los productos, si el producto está sin quantity o con
@@ -58,12 +56,12 @@ router.get("/:cid", async (req, res) => {
 */
 router.post("/:cid/product/:pid", async (req, res) => {
   const { cid, pid } = req.params;
-  // si no lo envía es 1
-  const { quantity } = req.body??1;
+
+  // si no manda body o no manda quantity es 1
+  const { quantity } = req.body?.quantity??1;
   
   if (quantity == 0) quantity = 1
 
-  // si no llega el carrito o el producto, bad request
   if (!cid || !pid) return res.status(400).send();
 
   try {
