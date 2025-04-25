@@ -26,9 +26,10 @@ router.post("/", async (req, res) => {
 
   try {
     const cart = await cm.createCart(cleanProducts);
-    res.status(200).json(cart);
+    if (!cart) return res.status(400).send()
+    return res.status(200).json(cart);
   } catch (error) {
-    res.status(500).send();
+    return res.status(500).send();
   }
 });
 
@@ -58,9 +59,8 @@ router.post("/:cid/product/:pid", async (req, res) => {
   const { cid, pid } = req.params;
 
   // si no manda body o no manda quantity es 1
-  const { quantity } = req.body?.quantity??1;
-  
-  if (quantity == 0) quantity = 1
+  let quantity = req.body?.quantity;
+  if (!quantity || quantity <= 0) quantity = 1;
 
   if (!cid || !pid) return res.status(400).send();
 

@@ -5,6 +5,9 @@ const { v4: uuidv4 } = require("uuid");
 const fs = require("fs/promises");
 const path = require("path");
 
+// propias
+const pm = require("./Products.models.js")
+
 const DB_FILE = path.join(__dirname, "..", "database", "carts.json");
 
 class CartManager {
@@ -32,6 +35,13 @@ class CartManager {
 
   
   async createCart(products) {
+    try {
+      const ok = await this.validarProductos(products)
+      if (!ok) throw new Error("Uno o más productos no son válidos");
+    } catch (error) {
+      console.log(error)
+      return
+    }
     const id = "c" + CartManager.generarUuid();
     const cart = { id, products };
     this.carts.push(cart);
@@ -43,6 +53,10 @@ class CartManager {
     try {
       const cart = await this.getCartById(cid);
       if (!cart) throw new Error("carrito no existe");
+      
+      const existProduct = await pm.getProductById(pid)
+      if (!existProduct) throw new Error("el producto no existe")
+      
       const product = cart.products.find((one) => one.id == pid);
       if (!product) {
         cart.products.push({ id: pid, quantity });
@@ -54,6 +68,14 @@ class CartManager {
     } catch (error) {
       return;
     }
+  }
+  
+  async validarProductos(productos) {
+    for (const p of productos) {
+      const productoValido = await pm.getProductById(p.id);
+      if (!productoValido) return false;
+    }
+    return true;
   }
 
   async montarDatabase() {
