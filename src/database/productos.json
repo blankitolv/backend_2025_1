@@ -1,0 +1,232 @@
+[
+  {
+    "id": "p07bb0449-c369-41b7-8925-50063a42f6e0",
+    "title": "Cafetera Eléctrica Inteligente",
+    "description": "Cafetera con control por voz y programación horaria.",
+    "code": "CAF-INT-2025",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "paf037d63-6f01-4508-9706-7cb971c8a8f1",
+    "title": "Cafetera Eléctrica Inteligente",
+    "description": "Cafetera con control por voz y programación horaria.",
+    "code": "CAF-INT-2025",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p66bb90ae-b003-4a1a-853a-d9773a6ee462",
+    "title": "Cafetera Eléctrica Inteligente",
+    "description": "Cafetera con control por voz y programación horaria.",
+    "code": "CAF-INT-2025",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p9faa9d3d-314a-4550-8e16-a876b318203d",
+    "title": "Cafetera Eléctrica Inteligente",
+    "description": "Cafetera con control por voz y programación horaria.",
+    "code": "CAF-INT-2025",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "pd2ebb18f-556f-49ad-8864-ef6f562a5299",
+    "title": "Cafetera Eléctrica Inteligente",
+    "description": "Cafetera con control por voz y programación horaria.",
+    "code": "CAF-INT-2025",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p68b1526e-b948-4d34-a9af-da2dcff7876d",
+    "title": "Cafetera Eléctrica Inteligente",
+    "description": "Cafetera con control por voz y programación horaria.",
+    "code": "CAF-INT-2025",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p59ca71c2-5477-4bac-8d6a-43a419744af8",
+    "title": "Chips",
+    "description": "fault-tolerant",
+    "code": "5",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p28f04542-4931-4f32-ba38-532f9cd02d4a",
+    "title": "Pizza",
+    "description": "demand-driven",
+    "code": "x",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p6a52b099-502d-405a-b26a-e15fa5317e43",
+    "title": "Shoes",
+    "description": "bottom-line",
+    "code": "6",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p5a1e50be-7187-41b5-839c-6434d7b394a7",
+    "title": "Table",
+    "description": "value-added",
+    "code": "f",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p5c5eaeb9-4629-48d0-ad0a-0500fb741ded",
+    "title": "Cheese",
+    "description": "stable",
+    "code": "o",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "pe1d75654-4cad-4250-bed6-33f25c8db3cb",
+    "title": "Chair",
+    "description": "even-keeled",
+    "code": "6",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "pbe106d0a-340c-4fae-85b3-aea8a84d67c8",
+    "title": "Ball",
+    "description": "cohesive",
+    "code": "e",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p0051c682-5b1a-4ff5-880f-045352702124",
+    "title": "Pants",
+    "description": "logistical",
+    "code": "i",
+    "status": true,
+    "stock": 50,
+    "category": "Electrodomésticos",
+    "thumbnail": "https://ejemplo.com/imagenes/cafetera-inteligente.jpg"
+  },
+  {
+    "id": "p4a739d35-23b9-49ac-8fb5-debf291ab5ff",
+    "title": "Ball",
+    "description": "next generation",
+    "code": "k",
+    "status": true,
+    "stock": 783,
+    "category": "Electrodomésticos",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "p2d58d334-d70b-42b4-b518-440f5e8ab96c",
+    "title": "Fish",
+    "description": "responsive",
+    "code": "w",
+    "status": true,
+    "stock": 793,
+    "category": "Electrodomésticos",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "p6aa5cbc6-f9e3-4844-9635-63007df78656",
+    "title": "Mouse",
+    "description": "system-worthy",
+    "code": "envisioneer232",
+    "status": true,
+    "stock": 331,
+    "category": "Electrodomésticos",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "p98cefb8c-ff8b-4747-9bb4-8500d275964a",
+    "title": "Salad",
+    "description": "tangible",
+    "code": "leverage364",
+    "status": true,
+    "stock": 779,
+    "category": "Electrodomésticos",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "p9292f7ce-8e8d-416f-b89e-51db710bbc0a",
+    "title": "Sausages",
+    "description": "5th generation",
+    "code": "seize117",
+    "status": true,
+    "stock": 412,
+    "category": "Electrodomésticos",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "p3f58a9d8-896c-4070-8d6e-17837aed29ed",
+    "title": "Ball",
+    "description": "asynchronous",
+    "code": "disintermediate47",
+    "status": true,
+    "stock": 539,
+    "category": "Electrodomésticos",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "p64edf100-9ec2-4bb2-bc33-0968200647ac",
+    "title": "Chicken",
+    "description": "multimedia",
+    "code": "engage216",
+    "status": true,
+    "stock": 158,
+    "category": "Clothing",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "pfa5e456c-9fef-49ec-92b1-9247c60fe0d1",
+    "title": "Shirt",
+    "description": "remera hermosa",
+    "code": "utilize341",
+    "status": true,
+    "stock": 820,
+    "category": "Automotive",
+    "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "pfd8c880c-1f2e-4e04-adbe-0a12cf16daa8",
+    "title": "Towels",
+    "description": "web-enabled",
+    "code": "evolve987",
+    "status": true,
+    "stock": 530,
+    "category": "Clothing",
+    "thumbnail": "http://placeimg.com/640/480"
+  }
+]
