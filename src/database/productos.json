@@ -228,5 +228,15 @@
     "stock": 530,
     "category": "Clothing",
     "thumbnail": "http://placeimg.com/640/480"
+  },
+  {
+    "id": "pbc49c75b-605f-4158-be75-77c3be823f09",
+    "title": "Mouse",
+    "description": "disintermediate",
+    "code": "grow775",
+    "status": true,
+    "stock": 988,
+    "category": "Automotive",
+    "thumbnail": "http://placeimg.com/640/480"
   }
 ]
