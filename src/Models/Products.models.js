@@ -7,7 +7,6 @@ const path = require("path");
 
 
 const DB_FILE = path.join(__dirname,"..","database", "productos.json");
-
 class ProductManager {
   constructor() {
     this.archivo_database = DB_FILE;
