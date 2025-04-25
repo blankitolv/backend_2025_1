@@ -5,7 +5,11 @@ const router = express.Router()
 // propias
 const pm = require("../Models/Products.models.js")
 
-
+/*
+  POST /api/products
+  Crea un nuevo producto.
+  Espera los campos: title, description, code, status, stock, category y thumbnail.
+*/
 router.post("/", async (req, res) => {
   const { title, description, code, status, stock, category, thumbnail } = req.body;
   try {
@@ -16,6 +20,10 @@ router.post("/", async (req, res) => {
   }
 });
 
+/*
+  GET /api/products
+  Devuelve el listado completo de productos.
+*/
 router.get("/", async (req, res) => {
   try {
     const productos = await pm.getProducts();
@@ -25,6 +33,10 @@ router.get("/", async (req, res) => {
   }
 });
 
+/*
+  GET /api/products/:pid
+  Devuelve un producto por su ID.
+*/
 router.get("/:pid", async (req, res) => {
   const { pid } = req.params;
   if (!pid) return res.status(400).send();
@@ -37,6 +49,11 @@ router.get("/:pid", async (req, res) => {
   }
 });
 
+/*
+  DELETE /api/products/:pid
+  Elimina un producto por su ID.
+  Si no existe, responde con error.
+*/
 router.delete("/:pid", async (req, res) => {
   const { pid } = req.params;
   if (!pid) return res.status(400).send();
@@ -49,14 +66,20 @@ router.delete("/:pid", async (req, res) => {
   }
 });
 
+/*
+  PUT /api/products/:pid
+  Actualiza los datos de un producto existente.
+  El campo status no puede ser modificado.
+  El ID del producto se sobreescribe con el de la ruta.
+*/
 router.put("/:pid", async (req,res)=>{
   const { pid } = req.params;
   const product = req.body;
   
-  // elimino el status si es que lo envió
+  // elimino el campo status si viene en el body
   delete product.status;
 
-  // le coloco el id (y si envió otro, lo piso)
+  // forzamos el ID del producto a ser el de la URL
   product.id = pid
 
   if (!pid) return res.status(400).send();
