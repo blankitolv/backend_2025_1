@@ -5,8 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 const fs = require("fs/promises");
 const path = require("path");
 
-
-const DB_FILE = path.join(__dirname,"..","database", "carts.json");
+const DB_FILE = path.join(__dirname, "..", "database", "carts.json");
 
 class CartManager {
   constructor() {
@@ -14,10 +13,12 @@ class CartManager {
     this.carts = [];
     this.montarDatabase();
   }
-  // debería ser static #generarUuid y se llama CartManager.#generarUuid() -- creo
+  // genera un UUID para los carritos
   static generarUuid() {
     return uuidv4();
   }
+
+  // guarda el contenido actual de los carritos en el archivo JSON
   async dumpCartsToJson() {
     await fs.writeFile(
       this.archivo_database,
@@ -28,28 +29,30 @@ class CartManager {
   async getCartById(id) {
     return this.carts.find((one) => one.id == id);
   }
+
+  
   async createCart(products) {
-    const id = "c" + CartManager.generarUuid()
-    const cart = {id, products}
+    const id = "c" + CartManager.generarUuid();
+    const cart = { id, products };
     this.carts.push(cart);
     this.dumpCartsToJson();
-    return cart
+    return cart;
   }
 
-  async addProductToCart(pid, cid, quantity){
+  async addProductToCart(pid, cid, quantity) {
     try {
-      const cart = await this.getCartById(cid)
-      if (!cart) throw new Error("carrito no existe")
-      const product = cart.products.find(one => one.id == pid)
-      if (!product){
-        cart.products.push({id:pid, quantity})
+      const cart = await this.getCartById(cid);
+      if (!cart) throw new Error("carrito no existe");
+      const product = cart.products.find((one) => one.id == pid);
+      if (!product) {
+        cart.products.push({ id: pid, quantity });
       } else {
-        product.quantity+=quantity
+        product.quantity += quantity;
       }
-      await this.dumpCartsToJson()
-      return cart
+      await this.dumpCartsToJson();
+      return cart;
     } catch (error) {
-      return
+      return;
     }
   }
 
@@ -68,7 +71,10 @@ class CartManager {
         this.carts = [];
         this.dumpCartsToJson();
       } else {
-        console.error("error al montar la base de datos de carritos de compras.", error);
+        console.error(
+          "error al montar la base de datos de carritos de compras.",
+          error
+        );
       }
     }
   }
