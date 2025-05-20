@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row p-2 m-2">
+    {{#each productos}}
+      <div class="card col-3 m-2" id="{{this.id}}" style="width: 18rem;">
+        <img src="./assets/img/ph.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <p> ID: {{this.id}} </p>
+          <p> CODE: {{this.code}} </p>
+          <p> STOCK: {{this.stock}} </p>
+          <p> CATEGORY: {{this.category}} </p>
+          <p class="card-text">{{this.description}}</p>
+          <button class="delete-button btn btn-danger" data-id="{{this.id}}">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const botonesEliminar = document.querySelectorAll(".delete-button");
+
+    botonesEliminar.forEach(boton => {
+      boton.addEventListener("click", async (e) => {
+        const id = e.target.dataset.id;
+        try {
+          const res = await fetch(`/api/products/${id}`, {
+            method: "DELETE"
+          });
+          if (res.ok) {
+            // Podés hacer un alert, recargar la página o eliminar el card del DOM
+            document.getElementById(id).remove();
+            console.log(`Producto ${id} eliminado`);
+          } else {
+            const err = await res.json();
+            console.error("Error al eliminar:", err);
+            alert("Error al eliminar producto");
+          }
+        } catch (err) {
+          console.error("Error:", err);
+          alert("Error de conexión con el servidor");
+        }
+      });
+    });
+  });
+</script>

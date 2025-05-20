@@ -25,9 +25,10 @@ class ProductManager {
   }
   async deleteProduct(id) {
     try {
-      const producto = this.getProductById(id);
+      const producto = await this.getProductById(id);
+      console.log("encontramos: ", producto)
       producto.status = false;
-      this.dumpProductsToJson();
+      await await this.dumpProductsToJson();
       return true;
     } catch (error) {
       console.log("ocurrio un error");
@@ -38,7 +39,7 @@ class ProductManager {
     return this.products.find((one) => one.id == id);
   }
   async getProducts() {
-    return this.products;
+    return this.products.filter(one => one.status == true);
   }
   async updateProduct(product) {
     const original_product = await this.getProductById(product.id)
@@ -55,6 +56,7 @@ class ProductManager {
       return
     }
   }
+
   async createProduct(
     title,
     description,
@@ -75,7 +77,7 @@ class ProductManager {
       thumbnail,
     };
     this.products.push(product);
-    this.dumpProductsToJson();
+    await this.dumpProductsToJson();
     return product
   }
 
@@ -92,7 +94,7 @@ class ProductManager {
       // el archivo no existe, lo creo y coloco un array vacío en memoria
       if (error.code === "ENOENT") {
         this.products = [];
-        this.dumpProductsToJson();
+        await this.dumpProductsToJson();
       } else {
         console.error("error al montar la base de datos de productos.", error);
       }

@@ -8,7 +8,16 @@ router.get('/', async(req , res)=>{
   try {
     const prods = await pm.getProducts()
     console.log("se envía: ", prods)
-    res.render('productos', {productos: prods})
+    res.render('home', {productos: prods})
+  } catch (error) {
+    console.log(error)
+  }
+})
+router.get('/realtimeproducts', async(req , res)=>{
+  try {
+    const prods = await pm.getProducts()
+    console.log("se envía: ", prods)
+    res.render('realtimeproducts', {})
   } catch (error) {
     console.log(error)
   }
