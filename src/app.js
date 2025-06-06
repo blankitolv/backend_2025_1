@@ -9,6 +9,7 @@ import { dirname } from 'path';
 
 import connectDB from "./config/database.js";
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -47,9 +48,11 @@ app.use("/", viewsRouter);
 
 // servers (http/websocket)
 const PORT = 8087;
-const httpServer = app.listen(PORT, () => {
-  console.log(`Escuchando desde el puerto: ${PORT}`);
-});
+const httpServer = http.createServer(app); // <--- Acá NO escuchamos todavía
+
+// const httpServer = app.listen(PORT, () => {
+//   console.log(`Escuchando desde el puerto: ${PORT}`);
+// });
 
 const socketServer = new Server(httpServer);
 
@@ -57,11 +60,9 @@ app.set('socketio',socketServer);
 Sockets(socketServer);
 
 
-// Conexión a la DB y luego levantar servidor
-connectDB().then(client => {
-  const db = client.db('backendFlex');
-  app.locals.db = db;
 
+// Conexión a la DB y luego levantar el servidor
+connectDB().then(() => {
   httpServer.listen(PORT, () => {
     console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
   });

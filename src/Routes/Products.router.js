@@ -3,30 +3,33 @@ import express from "express";
 const router = express.Router();
 
 // propias
-import pm from "../Models/Products.models.js";
+import ProductModel from "../Models/Products.models.js";
+import mongoose from "mongoose";
 
-// socket
-// import { socketServer } from "../app.js";
-
-/*
-  POST /api/products
-  Crea un nuevo producto.
-  Espera los campos: title, description, code, status, stock, category y thumbnail.
-*/
 router.post("/", async (req, res) => {
-  const { title, description, code, status, stock, category, thumbnail } =
+  const { title, description, code, status, stock, category, thumbnail, price } =
     req.body;
+
+  if (!title || !description || !code || stock === undefined || !category) {
+    return res.status(400).json({ error: "Faltan campos obligatorios" });
+  }
+
   try {
-    const prod = await pm.createProduct(
+    const newProduct = new ProductModel({
       title,
       description,
       code,
-      status,
+      status: status ?? true,
       stock,
       category,
-      thumbnail
-    );
-    res.status(200).json(prod);
+      thumbnail,
+      price,
+    });
+
+    await newProduct.save();
+
+    res.status(200).json(newProduct);
+
     const io = req.app.get("socketio");
     io.emit("new_product", { product: prod });
   } catch (error) {
@@ -40,10 +43,57 @@ router.post("/", async (req, res) => {
 */
 router.get("/", async (req, res) => {
   try {
-    const productos = await pm.getProducts();
-    res.status(200).json(productos);
+    //queryparams con valores por defecto
+    const limit = parseInt(req.query.limit) || 10;
+    const page = parseInt(req.query.page) || 1;
+    const sort = req.query.sort === "asc" ? 1 : req.query.sort === "desc" ? -1 : null;
+
+    let filter = {};
+    const allowedFilters = ["category", "status", "stock", "title"];
+
+    allowedFilters.forEach((key) => {
+      if (req.query[key] !== undefined) {
+        // convertir "true"/"false" a booleanos y números si corresponde
+        const value = req.query[key];
+        if (value === "true") {
+          filter[key] = true;
+        } else if (value === "false") {
+          filter[key] = false;
+        } else if (!isNaN(value)) {
+          filter[key] = Number(value);
+        } else {
+          filter[key] = value;
+        }
+      }
+    });
+
+    // Construir la consulta
+    const totalDocs = await ProductModel.countDocuments(filter);
+    const totalPages = Math.ceil(totalDocs / limit);
+    const skip = (page - 1) * limit;
+
+    let productsQuery = ProductModel.find(filter).skip(skip).limit(limit);
+    if (sort !== null) {
+      console.log("ordenando por: ",sort)
+      productsQuery = productsQuery.sort({ price: sort });
+    }
+
+    const products = await productsQuery.exec();
+
+    res.status(200).json({
+      status: "success",
+      totalDocs,
+      totalPages,
+      page,
+      hasPrevPage: page > 1,
+      hasNextPage: page < totalPages,
+      prevPage: page > 1 ? page - 1 : null,
+      nextPage: page < totalPages ? page + 1 : null,
+      payload: products,
+    });
   } catch (error) {
-    res.status(500).send();
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener los productos" });
   }
 });
 
@@ -53,9 +103,13 @@ router.get("/", async (req, res) => {
 */
 router.get("/:pid", async (req, res) => {
   const { pid } = req.params;
-  if (!pid) return res.status(400).send();
+
+  if (!pid || !mongoose.Types.ObjectId.isValid(pid)) {
+    return res.status(400).json({ error: "ID inválido" });
+  }
+
   try {
-    const oneProduct = await pm.getProductById(pid);
+    const oneProduct = await ProductModel.findById(pid);
     if (!oneProduct) return res.status(404).send();
     res.status(200).json(oneProduct);
   } catch (error) {
@@ -69,14 +123,16 @@ router.get("/:pid", async (req, res) => {
   Si no existe, responde con error.
 */
 router.delete("/:pid", async (req, res) => {
-  const { pid } = req.params;
-  if (!pid) return res.status(400).send();
+   const { pid } = req.params;
+
+  if (!pid || !mongoose.Types.ObjectId.isValid(pid)) {
+    return res.status(400).json({ error: "ID inválido" });
+  }
+
   try {
-    const valido = await pm.deleteProduct(pid);
-    if (!valido) {
-      res.status(400).send();
-      return;
-    }
+    const deleted = await ProductModel.findByIdAndDelete(pid);
+    if (!deleted)
+      return res.status(404).json({ error: "Producto no encontrado" });
     res.status(200).send();
     const io = req.app.get("socketio");
     io.emit("del_product", pid);
@@ -93,7 +149,12 @@ router.delete("/:pid", async (req, res) => {
   El ID del producto se sobreescribe con el de la ruta.
 */
 router.put("/:pid", async (req, res) => {
-  const { pid } = req.params;
+   const { pid } = req.params;
+  if (!pid || !mongoose.Types.ObjectId.isValid(pid)) {
+    return res.status(400).json({ error: "ID inválido" });
+  }
+
+
   const product = req.body;
 
   // elimino el campo status si viene en el body
@@ -104,9 +165,13 @@ router.put("/:pid", async (req, res) => {
 
   if (!pid) return res.status(400).send();
   try {
-    const prod = await pm.updateProduct(product);
-    if (!product) return res.status(500).send();
-    return res.status(200).json(prod);
+    delete product.status;
+    const updated = await ProductModel.findByIdAndUpdate(pid, product, {
+      new: true,
+    });
+    if (!updated)
+      return res.status(404).json({ error: "Producto no encontrado" });
+    res.status(200).json(updated);
   } catch (error) {
     console.log(error);
     return res.status(500).send();

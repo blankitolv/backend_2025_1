@@ -1,5 +1,8 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from 'dotenv'
+
+import mongoose from "mongoose";
+
 dotenv.config()
 
 const uri = process.env.MONGODB_URI;
@@ -19,11 +22,10 @@ const client = new MongoClient(uri, {
 
 async function connectDB() {
   try {
-    await client.connect();
-    console.log("✅ Conectado a MongoDB Atlas");
-    return client;
+    await mongoose.connect(uri);
+    console.log("✅ Conectado a MongoDB Atlas con Mongoose");
   } catch (error) {
-    console.error("❌ Error conectando a MongoDB", error);
+    console.error("❌ Error conectando con Mongoose", error);
     process.exit(1);
   }
 }
