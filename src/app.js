@@ -19,6 +19,9 @@ const productRouter = require("./Routes/Products.router");
 const cartRouter = require("./Routes/Carts.router");
 const viewsRouter = require("./Routes/views.router");
 
+
+
+
 // Middleware
 // ─────────────────────────────
 app.use(express.json());
@@ -46,3 +49,17 @@ const socketServer = new Server(httpServer);
 
 app.set('socketio',socketServer);
 Sockets(socketServer);
+
+
+// Conexión a la DB y luego levantar servidor
+connectDB().then(client => {
+  const db = client.db('mi_base');
+  app.locals.db = db;
+
+  httpServer.listen(PORT, () => {
+    console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+  });
+}).catch(err => {
+  console.error("❌ No se pudo conectar a MongoDB:", err);
+  process.exit(1);
+});
