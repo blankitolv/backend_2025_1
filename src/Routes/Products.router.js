@@ -1,9 +1,9 @@
 // terceros
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
 // propias
-const pm = require("../Models/Products.models.js");
+import pm from "../Models/Products.models.js";
 
 // socket
 // import { socketServer } from "../app.js";
@@ -113,4 +113,4 @@ router.put("/:pid", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

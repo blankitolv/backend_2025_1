@@ -1,23 +1,29 @@
-// de terceros
-// ─────────────────────────────
-const express = require("express");
-const { engine } = require("express-handlebars");
-const path = require("path");
-const http = require("http");
+import express from "express";
+import { engine } from "express-handlebars";
+import path from "path";
+import http from "http";
+import { Server } from "socket.io";
+import Sockets from "./socket/socket.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+import connectDB from "./config/database.js";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
-const { Server } = require("socket.io")
+// const { Server } = require("socket.io")
 
-const Sockets = require("./socket/socket")
+// const Sockets = require("./socket/socket")
 
 // Módulos propios
 // ─────────────────────────────
 
-const productRouter = require("./Routes/Products.router");
-const cartRouter = require("./Routes/Carts.router");
-const viewsRouter = require("./Routes/views.router");
+
+import productRouter from "./Routes/Products.router.js";
+import cartRouter from "./Routes/Carts.router.js";
+import viewsRouter from "./Routes/views.router.js";
 
 
 
@@ -53,7 +59,7 @@ Sockets(socketServer);
 
 // Conexión a la DB y luego levantar servidor
 connectDB().then(client => {
-  const db = client.db('mi_base');
+  const db = client.db('backendFlex');
   app.locals.db = db;
 
   httpServer.listen(PORT, () => {

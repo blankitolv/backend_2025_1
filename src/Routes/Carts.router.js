@@ -1,9 +1,9 @@
 // terceros
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
 // propias
-const cm = require("../Models/Carts.models.js");
+import cm from "../Models/Carts.models.js";
 
 /*
   POST /api/cart
@@ -73,4 +73,4 @@ router.post("/:cid/product/:pid", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router

@@ -1,5 +1,6 @@
-const pm = require("../Models/Products.models");
-module.exports = (io) => {
+import pm from "../Models/Products.models.js"
+// const pm = require("../Models/Products.models");
+export default (io) => {
   io.on("connection", (socket) => {
     console.log("Cliente conectado");
 

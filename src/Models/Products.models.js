@@ -1,10 +1,15 @@
 // terceros
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 
 // nativas
-const fs = require("fs/promises");
-const path = require("path");
+import fs from "fs/promises";
+import path from "path";
 
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const DB_FILE = path.join(__dirname,"..","database", "productos.json");
 class ProductManager {
@@ -103,4 +108,4 @@ class ProductManager {
 }
 
 const pm = new ProductManager();
-module.exports = pm;
+export default pm;
