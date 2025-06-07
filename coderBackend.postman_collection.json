@@ -1,0 +1,413 @@
+{
+	"info": {
+		"_postman_id": "8b9afe4e-2211-41eb-af1e-6470caa238fe",
+		"name": "coderBackend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18302215",
+		"_collection_link": "https://lucasvegareactjs.postman.co/workspace/Team-Workspace~d8c53f5f-d353-49c0-8e6c-ce73fe5cf4ad/collection/18302215-8b9afe4e-2211-41eb-af1e-6470caa238fe?action=share&source=collection_link&creator=18302215"
+	},
+	"item": [
+		{
+			"name": "coderhouse backend flex I lucas vega",
+			"item": [
+				{
+					"name": "Carts",
+					"item": [
+						{
+							"name": "createCart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"id\": \"684353f8ebb3e4be43598921\",\n        \"quantity\": 10\n    },\n    {\n        \"id\": \"68435518ebb3e4be4359892c\",\n        \"quantity\": 3\n    },\n    {\n        \"id\": \"6843551aebb3e4be43598930\",\n        \"quantity\": 12\n    }\n    \n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/carts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"carts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"id\": \"684353f8ebb3e4be43598921\",\n        \"quantity\": 10\n    },\n    {\n        \"id\": \"68435518ebb3e4be4359892c\",\n        \"quantity\": 3\n    },\n    {\n        \"id\": \"6843551aebb3e4be43598930\",\n        \"quantity\": 12\n    }\n    \n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/carts/68437b91abe8236507cdbb03/products/68437b0934127079c1e46e10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"carts",
+										"68437b91abe8236507cdbb03",
+										"products",
+										"68437b0934127079c1e46e10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "emptyCart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"id\": \"684353f8ebb3e4be43598921\",\n        \"quantity\": 10\n    },\n    {\n        \"id\": \"68435518ebb3e4be4359892c\",\n        \"quantity\": 3\n    },\n    {\n        \"id\": \"6843551aebb3e4be43598930\",\n        \"quantity\": 12\n    }\n    \n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/carts/68437fa2f122d570226d8a9c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"carts",
+										"68437fa2f122d570226d8a9c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "insertProductToCart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"quantity\":5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/carts/68435762f0cccaeb51847af7/product/68435517ebb3e4be4359892a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"carts",
+										"68435762f0cccaeb51847af7",
+										"product",
+										"68435517ebb3e4be4359892a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CartById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8087/api/carts/68437b91abe8236507cdbb03",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"carts",
+										"68437b91abe8236507cdbb03"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "rebaseCart",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"products\": [\n        {\n            \"id\": \"68437b0a34127079c1e46e14\",\n            \"quantity\": 1\n        },\n        {\n            \"id\": \"68437b0734127079c1e46e0c\",\n            \"quantity\": 2\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/carts/68437b91abe8236507cdbb03",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"carts",
+										"68437b91abe8236507cdbb03"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "modifyQuantity",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"quantity\":99\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/carts/68437b91abe8236507cdbb03/products/68437b0734127079c1e46e0c",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"carts",
+										"68437b91abe8236507cdbb03",
+										"products",
+										"68437b0734127079c1e46e0c"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "querys",
+							"item": [
+								{
+									"name": "getAllProducts",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8087/api/products",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8087",
+											"path": [
+												"api",
+												"products"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getAllProductsQuery",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8087/api/products?title=Chicken",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8087",
+											"path": [
+												"api",
+												"products"
+											],
+											"query": [
+												{
+													"key": "title",
+													"value": "Chicken"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getAllProductsLimit&PageNum",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8087/api/products?limit=4&page=2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8087",
+											"path": [
+												"api",
+												"products"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "4"
+												},
+												{
+													"key": "page",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "createProduct",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"{{$randomProduct}}\",\n  \"description\": \"{{$randomCatchPhraseDescriptor}}\",\n  \"code\": \"{{$randomBsBuzz}}{{$randomInt}}\",\n  \"status\": true,\n  \"stock\": {{$randomInt}},\n  \"category\": \"{{$randomDepartment}}\",\n  \"thumbnail\": \"{{$randomImageUrl}}\",\n  \"price\": {{$randomInt}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAllProducts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8087/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "productById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8087/api/products/68435420ebb3e4be43598923",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"products",
+										"68435420ebb3e4be43598923"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateProduct",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Alfajorcitos che\",\n    \"description\": \"well-modulated\",\n    \"stock\": 489,\n    \"code\": \"redefine591\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/api/products/68435420ebb3e4be43598923",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"api",
+										"products",
+										"68435420ebb3e4be43598923"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
