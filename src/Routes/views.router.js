@@ -1,9 +1,8 @@
 // terceros
 import express from "express"
-// const express = require("express");
 const router = express.Router()
 import pm from "../Models/Products.models.js"
-// const pm = require("../Models/Products.models")
+
 
 router.get('/', async(req , res)=>{
   try {
@@ -25,4 +24,3 @@ router.get('/realtimeproducts', async(req , res)=>{
 })
 
 export default router;
-// module.exports = router;

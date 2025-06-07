@@ -6,11 +6,6 @@ import pm from "./Products.models.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const DB_FILE = path.join(__dirname, "..", "database", "carts.json");
-
 import mongoose from "mongoose";
 const cartSchema = new mongoose.Schema({
   products: [
